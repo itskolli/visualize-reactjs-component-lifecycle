@@ -1,4 +1,4 @@
-# Visualize the execution of React lifecycle methods
+# Visualize the execution of ReactJS lifecycle methods
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
