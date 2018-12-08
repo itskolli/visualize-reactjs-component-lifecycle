@@ -30,3 +30,37 @@
     transform: rotate(360deg);
   }
 }
+.life-cycle-methods table {
+  width: 98%;
+  margin:auto;
+  border-collapse: collapse;
+}
+.life-cycle-methods table tr td, .life-cycle-methods table tr th {
+  cell-spacing: 10px;
+  border: 1px solid #c3c2c2;
+}
+table span {
+  display: block;
+  background: yellow;
+  -webkit-border-radius: 5px;
+  -webkit-transition-property:color, background;
+  -webkit-transition-duration: 5ms, 5ms;
+  -webkit-transition-timing-function: linear, ease-in;
+  padding:5px 0;
+  border: 1px solid #fff;
+}
+.half {
+  display: block;
+  width: 100%;
+}
+
+.active{
+  background: red;
+  color: white;
+}
+.react16-switch {
+  padding: 10px;
+  margin-bottom: 20px;
+  display: block;
+  font-weight: bold;
+}

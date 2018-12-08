@@ -1,4 +1,13 @@
 import React, { Component } from 'react';
+import Observer from "./observer";
+let counter = 0;
+const observerNext = (methodName) => {
+  counter += 1;
+  const delayBy = 800 + (counter * 300);
+  setTimeout(() => {
+    Observer.next(methodName);
+  }, delayBy);
+};
 
 class React15 extends Component {
   constructor() {
@@ -6,37 +15,40 @@ class React15 extends Component {
     this.state = {
       i: 0
     };
-    console.log("triggered constructor");
+    observerNext("constructor");
+
   }
   componentWillMount(){
-    console.log("triggered componentWillMount");
+    observerNext("componentWillMount");
   }
   componentDidMount(){
-    console.log("triggered componentDidMount");
+    observerNext("componentDidMount");
   }
   componentWillReceiveProps() {
-    console.log("triggered componentWillReceiveProps");
+    counter = 0;
+    observerNext("componentWillReceiveProps");
   }
   shouldComponentUpdate(){
-    console.log("triggered shouldComponentUpdate");
+    observerNext("shouldComponentUpdate");
     return true;
   }
   componentWillUpdate(){
-    console.log("triggered componentWillUpdate");
+    observerNext("componentWillUpdate");
+
   }
   componentDidUpdate(){
-    console.log("triggered componentDidUpdate");
+    observerNext("componentDidUpdate");
   }
   componentWillUnMount() {
-    console.log("triggered componentWillUnMount");
+    observerNext("componentWillUnMount");
   }
 
   render() {
-    console.log("triggered render");
+    observerNext("render");
     return (
       <div>
-        <h3>Hello, {this.props.message ? this.props.message : ""}</h3>
-        <input type="button" value="Change state" onClick={() => {this.setState({i: this.state.i + 1})}}/>
+        <h3>Hello, {this.props.message ? this.props.message : "< Message >"}</h3>
+        <input type="button" value="Change state" onClick={() => {counter=0;this.setState({i: this.state.i + 1})}}/>
         <h1>{this.state.i}</h1>
       </div>
     );

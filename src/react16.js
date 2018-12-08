@@ -1,4 +1,13 @@
 import React, { Component } from 'react';
+import Observer from "./observer";
+let counter = 0;
+const observerNext = (methodName) => {
+  counter += 1;
+  const delayBy = 800 + (counter * 300);
+  setTimeout(() => {
+    Observer.next(methodName);
+  }, delayBy);
+};
 
 class React16 extends Component {
   constructor() {
@@ -6,32 +15,33 @@ class React16 extends Component {
     this.state = {
       i: 0
     };
-    console.warn("triggered constructor");
+    observerNext("constructor");
   }
   componentDidMount(){
-    console.warn("triggered componentDidMount");
+    observerNext("componentDidMount");
   }
   static getDerivedStateFromProps() {
-    console.warn("triggered getDerivedStateFromProps");
+    observerNext("getDerivedStateFromProps");
     return null;
   }
   shouldComponentUpdate(){
-    console.warn("triggered shouldComponentUpdate");
+    observerNext("shouldComponentUpdate");
     return true;
   }
   componentDidUpdate(){
-    console.warn("triggered componentDidUpdate");
+    observerNext("componentDidUpdate");
+    console.groupEnd();
   }
   componentWillUnMount() {
-    console.warn("triggered componentWillUnMount");
+    observerNext("componentWillUnMount");
   }
 
   render() {
-    console.warn("triggered render");
+    observerNext("render");
     return (
       <div>
         <h3>Hello, {this.props.message ? this.props.message : ""}</h3>
-        <input type="button" value="Change state" onClick={() => {this.setState({i: this.state.i + 1})}}/>
+        <input type="button" value="Change state" onClick={() => {counter=0;this.setState({i: this.state.i + 1})}}/>
         <h1>{this.state.i}</h1>
       </div>
     );
