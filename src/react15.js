@@ -46,7 +46,7 @@ class React15 extends Component {
   render() {
     observerNext("render");
     return (
-      <div>
+      <div className="react15-container">
         <h3>Hello, {this.props.message ? this.props.message : "< Message >"}</h3>
         <input type="button" value="Change state" onClick={() => {counter=0;this.setState({i: this.state.i + 1})}}/>
         <h1>{this.state.i}</h1>

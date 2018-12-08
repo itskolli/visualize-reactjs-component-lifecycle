@@ -64,3 +64,9 @@ table span {
   display: block;
   font-weight: bold;
 }
+.react15-container, .react16-container {
+  border: 1px dotted black;
+  width: 300px;
+  margin: auto;
+  margin-bottom: 10px;
+}
